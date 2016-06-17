@@ -12,5 +12,5 @@ compare different * JS libs
 
 ~~~ bash
 ./tools/generate_data.py
-./tools/get_random_images.sh
+./tools/get_random_images.py
 ~~~
