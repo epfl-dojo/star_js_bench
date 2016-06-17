@@ -8,7 +8,7 @@ compare different * JS libs
 + Make nice code so that we can see it's a nice lib
 + Make efficient code so that ...
 
-# Initialisation
+# Initialization
 
 ~~~ bash
 ./tools/generate_data.py > data/summary.json
