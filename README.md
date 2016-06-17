@@ -11,6 +11,6 @@ compare different * JS libs
 # Initialization
 
 ~~~ bash
-./tools/generate_data.py > data/summary.json
+./tools/generate_data.py
 ./tools/get_random_images.sh
 ~~~
