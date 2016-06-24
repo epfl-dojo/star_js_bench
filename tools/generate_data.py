@@ -26,8 +26,11 @@ def all_files(path="/usr/lib"):
                 "uid":stat.st_uid,
                 "gid":stat.st_gid,
                 "date":stat.st_ctime,
-                "color":random.choice(["red", "green", "blue", "orange",
-                    "black", "puce", "yellow"]),
+                "color":random.choice(["Lavender", "Thistle", "Plum", "Violet", 
+                  "Orchid", "Fuchsia", "MediumOrchid", "MediumPurple", 
+                  "BlueViolet", "DarkViolet", "DarkOrchid", "DarkMagenta", 
+                  "Purple", "Indigo", "SlateBlue", "DarkSlateBlue", 
+                  "MediumSlateBlue"]),
                 "img":random.choice(images),
             }
 
