@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<!-- http://www.html5rocks.com/en/tutorials/file/dndfiles/ -->
+<head>
+    <meta charset="utf-8">
+    <title>★ js bench</title>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <input type="file" id="files" name="file" /> Read bytes:
+    <span class="readBytesButtons">
+  <button>entire file</button>
+</span>
+    <div id="byte_range"></div>
+    <div id="byte_content"></div>
+    <div id="content"></div>
+    <div id="content2"></div>
+    <script>
+        console.time('jquery');
+
+        function readBlob(opt_startByte, opt_stopByte) {
+
+            var files = document.getElementById('files').files;
+            if (!files.length) {
+                alert('Please select a file!');
+                return;
+            }
+
+            var file = files[0];
+            var start = parseInt(opt_startByte) || 0;
+            var stop = parseInt(opt_stopByte) || file.size - 1;
+
+            var reader = new FileReader();
+
+            // If we use onloadend, we need to check the readyState.
+            reader.onloadend = function(evt) {
+                if (evt.target.readyState == FileReader.DONE) { // DONE == 2
+                    var data = evt.target.result;
+                    var ul = document.createElement("ul");
+                    ul.setAttribute("id", "mainUL");
+                    document.getElementById("content2").appendChild(ul);
+
+                    d = JSON.parse(data);
+                    for (var i = 0; i < d.length; i++) {
+                        var obj = d[i];
+                        var currentLi = document.createElement("li");
+                        currentLi.setAttribute("id", "topli-" + i);
+                        currentLi.setAttribute("style", 'background-color:' + obj.color + ';');
+                        var t1 = document.createTextNode(obj.filename);
+                        currentLi.appendChild(t1);
+                        document.getElementById("mainUL").appendChild(currentLi);
+
+                        var subUL = document.createElement("ul");
+                        subUL.setAttribute("id", "subul-" + i);
+                        document.getElementById("topli-" + i).appendChild(subUL);
+
+                        for (var key in obj) {
+                            var subLI = document.createElement("li");
+                            subLI.setAttribute("id", key + i);
+                            var myTxt = document.createTextNode(obj[key]);
+                            subLI.appendChild(myTxt);
+                            subUL.appendChild(subLI);
+                        }
+                    }
+                }
+            };
+
+            var blob = file.slice(start, stop + 1);
+            reader.readAsBinaryString(blob);
+        }
+        document.querySelector('.readBytesButtons').addEventListener('click', function(evt) {
+            if (evt.target.tagName.toLowerCase() == 'button') {
+                var startByte = evt.target.getAttribute('data-startbyte');
+                var endByte = evt.target.getAttribute('data-endbyte');
+                readBlob(startByte, endByte);
+            }
+        }, false);
+        console.timeEnd('jquery');
+    </script>
+</body>
+</html>

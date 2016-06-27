@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>★ js bench</title>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <ul id="content"></ul>
+    <script>
+        $.getJSON("data/summary.json", function(d) {
+            console.time('jquery');
+            var l = d.length;
+            for (var i=0; i<l; i++) {
+                document.getElementById('content').innerHTML += ''
+                    + '<li id=' + i + ' style="background-color:' + d[i].color + ';">' + d[i].filename
+                    + '<ul>'
+                    + '<li>' + d[i].size + '</li>'
+                    + '<li>' + d[i].img + '</li>'
+                    + '<li>' + d[i].date + '</li>'
+                    + '<li>' + d[i].uid + '</li>'
+                    + '<li>' + d[i].gid + '</li>'
+                    + '<li>' + d[i].color + '</li>'
+                    + '</ul></li>';
+                }
+            console.timeEnd('jquery');
+        });
+    </script>
+</body>
+</html>

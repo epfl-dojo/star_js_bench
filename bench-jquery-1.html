@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>★ js bench</title>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <script>
+        $.getJSON("data/summary.json", function(data) {
+            console.time('jquery');
+            var items = [];
+            $.each(data, function(key, val) {
+                items.push("<li id='" + key + "'>"
+                  + val.filename
+                  + "<ul>"
+                  + "<li>" + val.size + "</li>"
+                  + "<li>" + val.img + "</li>"
+                  + "<li>" + val.date + "</li>"
+                  + "<li>" + val.uid + "</li>"
+                  + "<li>" + val.gid + "</li>"
+                  + "<li>" + val.color + "</li>"
+                  + "</ul>"
+                  + "</li>"
+                );
+            });
+            $("<ul/>", {
+                "class": "my-new-list",
+                html: items.join("")
+            }).appendTo("body");
+            console.timeEnd('jquery');
+        });
+    </script>
+</body>
+</html>
