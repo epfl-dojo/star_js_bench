@@ -12,7 +12,7 @@ PROJDIR = os.path.dirname(os.path.dirname(__file__))
 all_entries = []
 
 def all_files(path="/usr/lib"):
-    images = os.listdir(os.path.join(PROJDIR, "data/images/"))
+    images = os.listdir(os.path.join(PROJDIR, "data/images/100_100"))
     for root, dirs, files in os.walk(path):
         for f in files:
             full_path = os.path.join(root, f)
@@ -26,10 +26,10 @@ def all_files(path="/usr/lib"):
                 "uid":stat.st_uid,
                 "gid":stat.st_gid,
                 "date":stat.st_ctime,
-                "color":random.choice(["Lavender", "Thistle", "Plum", "Violet", 
-                  "Orchid", "Fuchsia", "MediumOrchid", "MediumPurple", 
-                  "BlueViolet", "DarkViolet", "DarkOrchid", "DarkMagenta", 
-                  "Purple", "Indigo", "SlateBlue", "DarkSlateBlue", 
+                "color":random.choice(["Lavender", "Thistle", "Plum", "Violet",
+                  "Orchid", "Fuchsia", "MediumOrchid", "MediumPurple",
+                  "BlueViolet", "DarkViolet", "DarkOrchid", "DarkMagenta",
+                  "Purple", "Indigo", "SlateBlue", "DarkSlateBlue",
                   "MediumSlateBlue"]),
                 "img":random.choice(images),
             }
