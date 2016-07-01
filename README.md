@@ -1,14 +1,23 @@
-# star_js_bench
+# *.js Bench
 
-compare different * JS libs
+compare different *JS libs
 
-# Objective
++ Vue.js
++ jQuery
++ vanilla JS
++ React
++ Angular
++ Polymer
++ Bootstrap
++ ...
 
-+ Clone this repo and implement a rendering of the data with your prefered * JS lib.
+## Objective
+
++ Branch this repo and implement a rendering of the data with your prefered *JS lib.
 + Make nice code so that we can see it's a nice lib
-+ Make efficient code so that ...
++ Make efficient code so that we can see ...
 
-# Initialization
+## Initialization
 
 ~~~ bash
 ./tools/generate_data.py
