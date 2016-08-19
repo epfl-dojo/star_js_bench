@@ -1,0 +1,30 @@
+{
+  "name": "star_js_bench",
+  "version": "0.0.1",
+  "description": "Benchmark various ways of accessing a large amount of data without lagging",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epfl-dojo/star_js_bench.git"
+  },
+  "keywords": [
+    "benchmark",
+    "vuejs",
+    "meteor",
+    "nodejs"
+  ],
+  "author": "EPFL Dojo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/epfl-dojo/star_js_bench/issues"
+  },
+  "homepage": "https://github.com/epfl-dojo/star_js_bench#readme",
+  "dependencies": {
+    "finalhandler": "^0.5.0",
+    "serve-static": "^1.11.1",
+    "vue": "^1.0.26"
+  }
+}
