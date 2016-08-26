@@ -4,7 +4,7 @@
     <h1>{{ msg }}</h1>
     <input id="searchInput" type="text" @keyup="updateSearchResults"/>
     <ul>
-      <li v-for="el in results">
+      <li v-for="el in results" :style="{ 'background-color': el.color }">
         <pre>{{ el }}</pre>
       </li>
     </ul>
@@ -46,10 +46,13 @@ window.searchResults = function searchResults(p, query, maxCount) {
     data () {
       return {
         msg: 'Hello Vue!',
+        maxCount: 10,
         results: []
       }
     },
     created (){
+      window.addEventListener('scroll', this.handleScroll);
+
       document.onkeydown = function(e) {
 
         /// for IE
@@ -67,9 +70,18 @@ window.searchResults = function searchResults(p, query, maxCount) {
       };
     },
     methods: {
+      handleScroll () {
+        if($(window).scrollTop() + $(window).height() == $(document).height()) {
+        this.moarResults();
+        }
+      },
+      moarResults() {
+        this.maxCount += 10;   // Ah, ah ah !!
+        this.updateSearchResults();
+        },
       updateSearchResults () {
         console.log("Updating search results");
-        var results = searchResults(p, $("input").val());
+        var results = searchResults(p, $("input").val(), this.maxCount);
         this.results = results;
       }
     }
